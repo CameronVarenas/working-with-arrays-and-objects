@@ -118,7 +118,7 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
 //   })
 // }
 
-let orderTotals = orders.filter(function(elem, i, arr) {
+let orderTotals = orders.map(function(elem, i, arr) {
   return elem.price * (1 + elem.tax)
 })
 
@@ -140,17 +140,19 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
   Use a high order method to create to get the sum of bobsTotal.
 */
 
-let bobsPurchases = []
+// filter => map => reduce
 
-let bobsTotal = purchases.map((elem, i, arr) => {
-  if (elem['owner'] === 'Bob') {
-    bobsPurchases.push(elem)
-  }
-}) 
+let bobsObj = purchases.filter(function(elem, i, arr) {
+  return elem.owner === 'Bob';
+})
 
-const bobsFinal = (arr) => {
-  return bobsPurchases.reduce((acc, elem, i, arr,) => {
-    return acc + elem
-  })
-}
+let bobsPrice = bobsObj.map(function(elem, i, arr) {
+  return elem.price
+})
+
+let bobsTotal = bobsPrice.reduce((acc, elem, i, arr) => {
+  return acc + elem
+})
+
+
 
