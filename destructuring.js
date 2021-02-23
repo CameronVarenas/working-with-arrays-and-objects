@@ -56,12 +56,24 @@ function greeting( obj ) {
 //Code Here
 
 function totalPopulation(obj) {
-  const {utah, california, texas, arizona} = obj;
+  const {utah, california, texas, arizona} = obj
 
-  const totalPopulation = obj.reduce(function(acc, elem, i, arr) {
-    return (acc += elem)
-  })
+  let sumPopulation = 0
+
+  sumPopulation += utah;
+  sumPopulation += california;
+  sumPopulation += texas;
+  sumPopulation += arizona;
+
+  console.log(sumPopulation)
+  return sumPopulation
+  
+  // const totalPopulation = obj.reduce(function(acc, elem, i, arr) {
+  //   return acc += elem
+  // })
 }
+
+
 
 ////////// PROBLEM 4 //////////
 
@@ -80,9 +92,7 @@ function ingredients(obj) {
 
   newArr = []
 
-  for (let i = 0; i <= obj.length - 1; i++) {
-    newArr.push(obj[i])
-  }
+  newArr.push(obj.carb, obj.fat, obj.protein)
 
   return newArr
 }
@@ -118,5 +128,17 @@ function largeNumbers({first, second, third}) {
 //Code Here
 
 function numberGroups({a, b, c}) {
-  const lengths = a;
+
+  Math.max(a.length, b.length, c.length)
+
+  if ((a > b) && (a > c)) {
+    return a
+  } else if ((b > a) && (b > c)) {
+    return b
+  } else {
+    return c
+  }
+
+
+
 }

@@ -42,10 +42,10 @@
 function showValues( obj ) {
   let newStr = ''
 
-  for(var key in showValues) {
-    
+  for(var key in obj) {
+    newStr += obj[key]
   }
-
+  
   return newStr
 }
 
@@ -103,7 +103,9 @@ function secrets(obj) {
   var emptyStr = '';
 
   for(var key in obj) {
-    obj[key].toLowerCase().includes('sh') ? emptyStr.concat(obj[key]) : null
+    if (key.includes('sh') === true) {
+      emptyStr += obj[key]
+    }
   }
 
   return emptyStr
